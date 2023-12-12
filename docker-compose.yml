@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  zen:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./project:/project
+    command: >
+      sh -c "python -V"

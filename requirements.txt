@@ -1,1 +1,2 @@
-pandas
+zenml==0.51.0
+flake8==6.1.0
