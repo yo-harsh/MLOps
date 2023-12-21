@@ -1,0 +1,80 @@
+enable_cache: True
+enable_artifact_metadata: True
+enable_artifact_visualization: True
+extra:
+  tags: production
+name: "har"
+run_name: har
+# schedule:
+#   catchup: bool
+#   cron_expression: Optional[str]
+#   end_time: Optional[datetime]
+#   interval_second: Optional[timedelta]
+#   start_time: Optional[datetime]
+settings:
+  docker:
+    build_context_root: .
+    # build_options: Mapping[str, Any]
+    # source_files: str
+    # copy_global_config: bool
+    # dockerfile: Optional[str]
+    # dockerignore: Optional[str]
+    # environment: Mapping[str, Any]
+    # install_stack_requirements: bool
+    parent_image: "docker.io/data0101/zen_ml:01"
+    # replicate_local_python_environment: Optional
+    # required_integrations: List[str]
+    requirements:
+      - pandas
+    # target_repository: str
+    # user: Optional[str]
+  resources:
+    cpu_count: 1
+    gpu_count: 1
+    memory: "1GB"
+steps:
+  get_first_num:
+    enable_cache: false
+    experiment_tracker: mlflow_tracker
+#     extra: Mapping[str, Any]
+#     outputs:
+#       first_num:
+#         artifact_source: Optional[str]
+#         materializer_source: Optional[str]
+#     parameters: {}
+#     settings:
+#       resources:
+#         cpu_count: Optional[PositiveFloat]
+#         gpu_count: Optional[PositiveInt]
+#         memory: Optional[ConstrainedStrValue]
+#     step_operator: Optional[str]
+#   get_random_int:
+#     enable_cache: Optional[bool]
+#     experiment_tracker: Optional[str]
+#     extra: Mapping[str, Any]
+#     outputs:
+#       random_num:
+#         artifact_source: Optional[str]
+#         materializer_source: Optional[str]
+#     parameters: {}
+#     settings:
+#       resources:
+#         cpu_count: Optional[PositiveFloat]
+#         gpu_count: Optional[PositiveInt]
+#         memory: Optional[ConstrainedStrValue]
+#     step_operator: Optional[str]
+#   subtract_numbers:
+#     enable_cache: Optional[bool]
+#     experiment_tracker: Optional[str]
+#     extra: Mapping[str, Any]
+#     outputs:
+#       result:
+#         artifact_source: Optional[str]
+#         materializer_source: Optional[str]
+#     parameters: {}
+#     settings:
+#       resources:
+#         cpu_count: Optional[PositiveFloat]
+#         gpu_count: Optional[PositiveInt]
+#         memory: Optional[ConstrainedStrValue]
+#     step_operator: Optional[str]

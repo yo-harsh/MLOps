@@ -1,5 +1,4 @@
 version: '3.9'
-
 services:
   zen:
     build:
@@ -9,6 +8,18 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./project:/project
+      - ./project:/app/project
     command: >
-      sh -c "python -V"
+      sh -c "sleep 5 &&
+             zenml connect --url http://host.docker.internal:8080 --username default --password '' &&
+             python run_pipeline.py"
+    depends_on:
+      - zen_server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  zen_server:
+    image: zenmldocker/zenml-server:0.52.0
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
