@@ -1,6 +1,6 @@
 import logging
 import pandas as pd
-from zenml import step, pipeline
+from zenml import step
 
 class DataIngestion:
     """
@@ -12,7 +12,7 @@ class DataIngestion:
 
     def get_df(self):
         logging.info(f"Throwing data from {self.data_path}")
-        return pd.read_csv(self.data_path, low_memory=False)
+        return pd.read_excel(self.data_path,sheet_name=1)
 
 @step
 def ingest_data(data_path:str) -> pd.DataFrame:
