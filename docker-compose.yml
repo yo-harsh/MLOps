@@ -7,12 +7,14 @@ services:
         - DEV=true
     ports:
       - "8000:8000"
+      - "8501:8501"
     volumes:
       - ./project:/app/project
     command: >
       sh -c "sleep 5 &&
              zenml connect --url http://host.docker.internal:8080 --username default --password '' &&
-             python run_pipeline.py"
+             python run_pipeline.py &&
+             streamlit run streamlit.py"
     depends_on:
       - zen_server
     extra_hosts:
