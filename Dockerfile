@@ -15,8 +15,14 @@ RUN apt-get update && \
     /mlops/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
     apt-get remove -y build-essential && \
     apt-get autoremove -y && \
-    rm -rf /tmp/* /var/lib/apt/lists/*
+    rm -rf /tmp/* /var/lib/apt/lists/* && \
+    adduser \
+        --disabled-password \
+        test-user && \
+        chown -R test-user:test-user /app
 
 ENV PATH="/mlops/bin:$PATH"
 
 WORKDIR /app/project
+
+USER test-user
