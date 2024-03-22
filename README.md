@@ -1,12 +1,11 @@
-# ZenML MLOps Project
+
+# MLOps Churn Prediction
 
 This project demonstrates the usage of ZenML for MLOps (Machine Learning Operations). It includes a ZenML pipeline for training a model and a Streamlit web application for making predictions using the trained model.
 
-## Getting Started
+## Docker Installation [🔗](https://docs.docker.com/engine/install/)
 
-### Prerequisites
-
-- [Docker](https://www.docker.com/get-started)
+Use the this link to install docker desktop.
 
 ### Clone the Repository
 
@@ -26,6 +25,7 @@ docker compose up --build
 ```
 
 This command will build the necessary Docker images and start the services.
+
 
 ### Access ZenML Dashboard
 
